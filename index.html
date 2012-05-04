@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Obligatory Slider - Experiment</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="slider.css">
+</head>
+<body>
+	 
+	 <div class="slider">
+	 	<ul>
+	 		<li><img src="img/img1.gif" alt="image"></li>
+	 		<li><img src="img/img2.gif" alt="image"></li>
+	 		<li><img src="img/img3.gif" alt="image"></li>
+	 		<li><img src="img/img4.gif" alt="image"></li>
+	 		<li><img src="img/img1.gif" alt="image"></li>
+	 		<li><img src="img/img2.gif" alt="image"></li>
+	 		<li><img src="img/img3.gif" alt="image"></li>
+	 		<li><img src="img/img4.gif" alt="image"></li>
+	 	</ul>
+	 </div>
+
+	 <div id="slider-nav">
+	 	<div class="selectors">
+	 		<ul></ul>
+	 	</div>
+	 	<button data-dir="prev">Previous</button>
+	 	<button data-dir="next">Next</button>
+	 </div>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script src="slider.js"></script>
+	<script>
+
+	(function() {
+		var container = $('.slider').css('overflow-x', 'hidden').children('ul'),
+			slider = new Slider( $('div.slider ul'), $('#slider-nav') );
+
+		slider.init();
+		slider.nav.find('button').on('click', function() {
+			slider.setCurrent( $(this).data('dir') );
+			slider.transition();
+		});
+		slider.imgsList.find('span').on('click', function() {
+			slider.setPosition( $(this).parent().data('pos') );
+			slider.transition();
+		})	
+
+	})();
+
+	</script>
+</body>
+</html>
